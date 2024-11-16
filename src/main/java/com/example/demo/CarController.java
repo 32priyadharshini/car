@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CarController {
 	@Autowired
-	CarService cs;
+	CarService carser;
 	@Autowired
 	CarRepo  cr;
 	@GetMapping("/findModel/{a}")
@@ -36,27 +36,27 @@ public class CarController {
 	
 	@PostMapping(value="/post")
 	public String post(@RequestBody CarEntity a) {
-		return cs.post(a);
+		return carser.post(a);
 	}
 	
 	@PostMapping(value="postt")
 	public String  postt(@RequestBody CarEntity a) throws PricenotFoundException {
-		return cs.postt(a);
+		return carser.postt(a);
 	}
 	
 	@PostMapping(value="/postAll")
 	public String postAll(@RequestBody  List<CarEntity> a) {
-		return cs.postAll(a);
+		return carser.postAll(a);
 	}
 	@GetMapping("getAll")
 	public List<CarEntity> getAll(){
-		return cs.getAll();
+		return carser.getAll();
 		
 		
 	}
 	@GetMapping("/getById")
 		public CarEntity getById(@PathVariable int id) {
-			return cs.getById(id);
+			return carser.getById(id);
 		}
 	
 	
@@ -66,28 +66,28 @@ public class CarController {
 //	}
 	@GetMapping(value="/getPrice/{x}")
 	public List<CarEntity> getByMaxPrice(@PathVariable int x) {
-		return cs.getPrice(x);
+		return carser.getPrice(x);
 	}
 	@PutMapping(value="/update")
 	public String update(@RequestBody CarEntity s) {
-		return cs.update(s);
+		return carser.update(s);
 	}
 	@PatchMapping("/patch/{id}/{brand}")
 	public String patch(@PathVariable String brand,@PathVariable int id ) {
-		return cs.patch(brand,id);
+		return carser.patch(brand,id);
 	}
 	
 	
 	
 	@GetMapping(value="/getBrand/{br}")
 	public List<CarEntity> getBrand(@PathVariable String br) throws BrandNotException{
-		return cs.getBrand(br);
+		return carser.getBrand(br);
 	}
 	
 	
 	@GetMapping(value="/getBrands")
 	public List<Car> getCbrand() {
-		return cs.getCbrand();
+		return carser.getCbrand();
 	}
 }
 
